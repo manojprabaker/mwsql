@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/create.css" />
+    <title>Details</title>
+  </head>
+  <body>
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal" id="createData"
+    >
+      Create Details
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal1"
+      id="view-data"
+    >
+      View Records
+    </button>
+
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Create Record</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close" id="close-btn"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="main-create">
+              <div class="create-box">
+                <div>
+                  <input
+                    type="text"
+                    id="sno"
+                    placeholder="Enter SerialNumber"
+                    required
+                    onkeypress="return restrictAlphabets(event)"/>
+                  <p class="error">
+                    Please enter only numbers below 100
+                  </p>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    id="fname"
+                    placeholder="Enter Your Name"
+                    required
+                  />
+                  <p class="error">
+                    Name should be minimum 5 characters
+                  </p>
+                </div>
+                <div class="inner-div">
+                    <span>Date of Birth</span>
+                  <input
+                    type="date"
+                    id="dob"
+                    placeholder="Enter Your date of birth"
+                    required
+                  />
+                  <p class="error">
+                    Please select DOB
+                  </p>
+                </div>
+                <div class="inner-div">
+                    <span class="doj">Date of Joining</span>
+                    <input
+                      type="date"
+                      id="doj"
+                      placeholder="Enter Your date of Joining"
+                      required
+                    />
+                    <p class="error">
+                        Please select DOJ
+                      </p>
+                  </div>
+                  <div class="inner-div">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Male">
+                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Female">
+                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                      </div>
+                      <p class="error">
+                        Please select Gender
+                      </p>
+                  </div>
+                  <div>
+                    <select class="form-select" aria-label="Default select example" id="designation">
+                        <option selected>Select Designation</option>
+                        <option value="Developer">Developer</option>
+                        <option value="Tester">Tester</option>
+                        <option value="Designer">Designer</option>
+                      </select>
+                      <p class="error">
+                        Please select Designation
+                      </p>
+                  </div>
+                  <div>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 120px"></textarea>
+                        <label for="floatingTextarea2">Comments</label>
+                      </div>
+                      <p class="error">
+                        Please give your comments
+                      </p>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" id="sub-btn">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade view-modal"
+      id="exampleModal1"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog view-sec">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"  id="clos-view-btn"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <table id="table-append">
+                <tr>
+                  <th>S.No</th>
+                  <th>Name</th>
+                  <th>Date of Birth</th>
+                  <th>Date of Joining</th>
+                  <th>Gender</th>
+                  <th>Designation</th>
+                  <th>Comments</th>
+                  <th>Delete Record</th>
+                  <th>Update Record</th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/create.js"></script>
+  </body>
+</html>
